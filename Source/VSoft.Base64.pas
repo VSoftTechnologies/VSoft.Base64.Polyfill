@@ -22,7 +22,7 @@
 
 {
 
-This is a simple Delphi polyfill library that enables you to use Base64 Encode/Decode for versions 
+This is a simple Delphi polyfill library that enables you to use Base64 Encode/Decode for versions
 of Delphi that do not include System.NetEncoding (earlier than XE7).
 
 <  XE 7 - uses own Base64 code.
@@ -203,7 +203,6 @@ const
 var
   Buffer: TBytes;
   BytesRead: Integer;
-  TotalProcessed: Integer;
   OriginalPosition: Int64;
   PartialResult: string;
   CharCount: Integer;
@@ -218,7 +217,6 @@ begin
 
   // Save original position
   OriginalPosition := stream.Position;
-  TotalProcessed := 0;
 
   try
     SetLength(Buffer, BufferSize);
@@ -255,9 +253,6 @@ begin
         end
         else
           Result := Result + PartialResult;
-
-        Inc(TotalProcessed, BytesRead);
-
         // Reset buffer size for next iteration
         SetLength(Buffer, BufferSize);
       end;
@@ -480,14 +475,14 @@ end;
 class function TBase64.Encode(const bytes : TBytes; includeLineBreaks : boolean; charsPerLine : integer; const lineBreak : string): string;
 {$IFDEF HAS_NET_ENCODING}
 var
-  encoding : TCustomBase64Encoding;
+  encoding : TBase64Encoding;
 {$ENDIF}
 begin
 {$IFDEF HAS_NET_ENCODING}
   if includeLineBreaks then
     encoding := TBase64Encoding.Create(charsPerLine, lineBreak)
   else
-    encoding := TBase64StringEncoding.Create;
+    encoding := TBase64Encoding.Create;
   try
      Result := encoding.EncodeBytesToString(bytes);
   finally
@@ -505,7 +500,7 @@ class function TBase64.Encode(const stream: TStream; includeLineBreaks : boolean
 {$IFDEF HAS_NET_ENCODING}
 var
   base64Stream: TStringStream;
-  encoding: TCustomBase64Encoding;
+  encoding: TBase64Encoding;
 {$ENDIF}
 begin
  {$IFDEF HAS_NET_ENCODING}
@@ -514,7 +509,7 @@ begin
     if includeLineBreaks then
       encoding := TBase64Encoding.Create(charsPerLine, lineBreak)
     else
-      encoding := TBase64StringEncoding.Create;
+      encoding := TBase64Encoding.Create;
     try
       encoding.Encode(stream, base64Stream);
       Result := base64Stream.DataString;

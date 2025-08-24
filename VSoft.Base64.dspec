@@ -1,7 +1,7 @@
 {
  "metadata": {
   "id": "VSoft.Base64.Polyfill",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Simple Base64 Encode/Decode polyfill for versions of delphi that do not have System.NetEncoding\r\n\r\nUseful for libraries that need to support older delphi versions.",
   "authors": "Vincent Parrett",
   "projectUrl": "https://github.com/VSoftTechnologies/VSoft.Base64",
