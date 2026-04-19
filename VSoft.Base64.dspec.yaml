@@ -14,7 +14,7 @@ metadata:
   copyright: Vincent Parrett and contributors
   tags: [ base64, polyfill ]
   version: 0.1.9
-  repositoryCommit: Id:5858c3f8fe78353b2b1e69148c0a36876a7d22d1
+  repositoryCommit: #HASH#
 
 targetPlatforms:
   - compiler from: delphixe2
