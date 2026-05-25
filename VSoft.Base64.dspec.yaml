@@ -13,20 +13,23 @@ metadata:
   readme: README.md
   copyright: Vincent Parrett and contributors
   tags: [ base64, polyfill ]
-  version: 0.1.10
+  version: 0.1.11
   repositoryCommit: #HASH#
+
+# define variable defaults - can be overriden in targetPlatforms
+variables:
+  packageSource: Rad Studio $compilernoprefix$
 
 targetPlatforms:
   - compiler from: delphixe2
-    compiler to: delphi13
+    compiler to: delphi13.0
     platforms: [ win32, win64 ]
 
 templates:
   - name: default
-
     source:
-      - src: ./Source/*.pas
-      - src: ./Packages/**.dpk
-      - src: ./Packages/**.dproj
+      - src: ./source/*.pas
+      - src: ./packages/$packageSource$/*.dproj
+      - src: ./packages/$packageSource$/*.dpk
     build:
-      - project: ./Packages/RAD Studio 11.0/VSoftBase64.dproj
+      - project: ./Packages/$packageSource$/VSoftBase64R.dproj

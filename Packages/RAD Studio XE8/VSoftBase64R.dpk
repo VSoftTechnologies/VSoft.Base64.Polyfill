@@ -1,11 +1,11 @@
-package VSoftBase64;
+﻿package VSoftBase64R;
 
 {$R *.res}
 {$IFDEF IMPLICITBUILDING This IFDEF should not be used by users}
 {$ALIGN 8}
 {$ASSERTIONS ON}
 {$BOOLEVAL OFF}
-{$DEBUGINFO OFF}
+{$DEBUGINFO ON}
 {$EXTENDEDSYNTAX ON}
 {$IMPORTEDDATA ON}
 {$IOCHECKS ON}
@@ -13,8 +13,8 @@ package VSoftBase64;
 {$LONGSTRINGS ON}
 {$OPENSTRINGS ON}
 {$OPTIMIZATION OFF}
-{$OVERFLOWCHECKS ON}
-{$RANGECHECKS ON}
+{$OVERFLOWCHECKS OFF}
+{$RANGECHECKS OFF}
 {$REFERENCEINFO ON}
 {$SAFEDIVIDE OFF}
 {$STACKFRAMES ON}
@@ -25,12 +25,13 @@ package VSoftBase64;
 {$IMAGEBASE $400000}
 {$DEFINE DEBUG}
 {$ENDIF IMPLICITBUILDING}
-{$IMPLICITBUILD ON}
+{$LIBSUFFIX '220'}
+{$RUNONLY}
+{$IMPLICITBUILD OFF}
 
 requires
   rtl;
 
 contains
-  VSoft.Base64 in '..\..\Source\VSoft.Base64.pas';
-
+  VSoft.Base64 in '..\..\source\VSoft.Base64.pas';
 end.
